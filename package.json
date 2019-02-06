@@ -1,0 +1,17 @@
+{
+  "name": "scootify-playlist",
+  "version": "1.0.0",
+  "description": "fec prj",
+  "author": "dnErf",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  }
+}
