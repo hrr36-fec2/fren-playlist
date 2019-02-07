@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './client/Playlist_Service.js',
+  entry: './client/',
   module: {
     rule: [
       {
