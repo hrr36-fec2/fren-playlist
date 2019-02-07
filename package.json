@@ -8,7 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "db:seed": "node server/db/seeds.js"
+    "db:seed": "node server/db/seeds.js",
+    "dev": "webpack --watch --mode development",
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "axios": "^0.18.0",
