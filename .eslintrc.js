@@ -7,5 +7,7 @@
 
 module.exports = {
   extends: './node_modules/eslint-config-hackreactor/index.js',
-  rules: {} // i need to overide some rules
+  rules: {
+    camelcase: 'never' // gives me warnin on my seeds
+  } // i need to overide some rules
 };
