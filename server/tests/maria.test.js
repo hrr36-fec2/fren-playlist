@@ -12,29 +12,29 @@ describe('should be able to connect and communicate with maria', () => {
       database: 'hrr'
     });
   })
-  test('this should be invoke if before all is successful', () => {
+  test('this should be invoked if beforeAll is successful', () => {
     expect('maria').toBe('maria');
   });
   test('should be able to get a playlist base on id', () => {
     mdb
-      .query('SELECT _id FROM current_playlist WHERE _id = 0')
+      .query('SELECT _id FROM current_playlist WHERE _id = ?', [1])
       .then((results) => {
-        console.log('results', results);
-        expects(results).toBe(results);
+        expects(results).toBe(1);
       });
   });
   test('should be able to make request on api and get the playlist', () => {
     axios
       .get('http://localhost:3002/api/playlist/1')
       .then((results) => {
-        expects(results).toBe(results);
+        let parsed_results = JSON.parse(results);
+        expects(parsed_results.contructor).toBe(Array);
       });
   });
   test('should be able to delete and insert song on the playlist', () => {
     axios
       .get('http://localhost:3002/api/playlist/4')
       .then(async (results) => {
-        let parsed_results = JSON.parse.results;
+        let parsed_results = JSON.parse(results);
         let parsed_total = parsed_results.length - 1
         let songs_count = parsed_results.length;
 
@@ -45,7 +45,7 @@ describe('should be able to connect and communicate with maria', () => {
           axios
             .get('http://localhost:3002/api/playlist/4')
             .then((deleteResults) => {
-              let parsed_deleteResults = JSON.parse.results;
+              let parsed_deleteResults = JSON.parse(results);
               let parsed_totalAfterDelete = parsed_deleteResults.length - 1;
               expect(parsed_totalAfterDelete).toBe(parsed_total - 1);
             })
