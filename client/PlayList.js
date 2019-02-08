@@ -1,16 +1,19 @@
 import React from 'react';
 
-import List from './components/List'
-import Info from './components/Info'
+import List from './components/List';
+import Info from './components/Info';
 
-import { Container } from './components/Styled.js'
+import ContextWrap from './components/Context.js';
+import { Container } from './components/Styled.js';
 
 const PlayList = () => {
   return (
-    <Container>
-      <List />
-      <Info />
-    </Container>
+    <ContextWrap>
+      <Container>
+        <Info />
+        <List />
+      </Container>
+    </ContextWrap>
   );
 }
 
