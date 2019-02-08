@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { PlayListContext } from '../Context.js';
+import { InfoContainer } from '../Styled.js';
 
 const Info = () => {
   return (
-    <div>Info</div>
+    <InfoContainer>
+      Info
+    </InfoContainer>
   )
 }
 
