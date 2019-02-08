@@ -11,6 +11,8 @@
     "db:seed": "node server/db/seeds.js",
     "test:backend": "jest server/tests",
     "dev": "webpack --watch --mode development",
+    "dev:hot": "webpack-dev-server --content-base=www --inline --watch --hot",
+    "build": "webpack --mode production",
     "build": "webpack --mode production",
     "server": "nodemon server/server.js"
   },
@@ -20,7 +22,10 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mariadb": "^2.0.3"
+    "mariadb": "^2.0.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "webpack-dev-server": "^3.1.14"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.2.0",
