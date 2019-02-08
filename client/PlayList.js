@@ -3,12 +3,14 @@ import React from 'react';
 import List from './components/List'
 import Info from './components/Info'
 
+import { Container } from './components/Styled.js'
+
 const PlayList = () => {
   return (
-    <div>
+    <Container>
       <List />
       <Info />
-    </div>
+    </Container>
   );
 }
 

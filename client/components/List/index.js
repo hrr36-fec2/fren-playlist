@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { ListContainer } from '../Styled.js'
+
 const List = () => {
   return (
-    <div>List</div>
+    <ListContainer>List</ListContainer>
   )
 }
 
