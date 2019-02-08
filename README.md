@@ -1,13 +1,12 @@
-# Project Name
+# Scootify
 
-> Project description
+> Hard fork of Spootify . Project for Hackreactor FEC . Full-Stack Music Player
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrr36-fec2/fren-playlist
+  - https://github.com/hrr36-fec2/Eliana-playback-service
+  - https://github.com/hrr36-fec2/pl61-recommends
 
 ## Table of Contents
 
