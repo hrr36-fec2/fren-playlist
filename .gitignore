@@ -61,5 +61,6 @@ typings/
 .next
 
 # xtra
+dist/
 x/
 nodemon.json

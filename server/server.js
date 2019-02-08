@@ -1,8 +1,8 @@
+const path = require('path');
 const express = require('express')();
-const static_route = require('express').static('../public');
 const router = require('./api/router.js');
 const body_parser = require('body-parser');
-const path = require('path');
+const static_route = require('express').static(path.join(__dirname, '../dist'));
 const port = process.env.PORT || 3002;
 
 express
@@ -11,7 +11,7 @@ express
   .use(static_route)
   .use('/api', router)
   .use('*', (__, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public'));
+    res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'));
   });
   
 express.listen(port, () => { console.log(`express is listening at port ${port}`) });
