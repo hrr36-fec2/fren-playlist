@@ -1,7 +1,15 @@
 import React, { useContext } from 'react'
 
+import { 
+  Anch,
+  ListIcon,  
+  ArtCover, 
+  InfoName,
+  InfoContainer, 
+  InfoPlayButton
+} from '../Styled.js';
+
 import { PlayListContext } from '../Context.js';
-import { Anch, InfoContainer, ArtCover, InfoName, InfoPlayButton, ListIcon } from '../Styled.js';
 
 const Info = () => {
   return (

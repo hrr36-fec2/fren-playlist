@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react'
 
-import { PlayListContext } from '../Context.js';
-import { ListContainer } from '../Styled.js';
-
 import Item from './Item.js';
+
+import { ListContainer } from '../Styled.js';
+import { PlayListContext } from '../Context.js';
 
 const List = () => {
   let 
     ctx = useContext(PlayListContext)
-    , [active, setActive] = useState(0)
-    , [statusIcon, setStatusIcon] = useState('music_note')
+    , [active, setActive]             = useState(0)
     , [showEllipsis, setShowEllipsis] = useState(false)
+    , [statusIcon, setStatusIcon]     = useState('music_note')
     , handleClick = (e) => {
         setActive([e.target][0].id === active ? 0 : [e.target][0].id);
       }
@@ -20,7 +20,8 @@ const List = () => {
       }
   return (
     <ListContainer>
-      {ctx.song_tracks.map((song) => {
+      {
+        ctx.song_tracks.map((song) => {
         return (
           <Item 
             isActive={active === song.track_id}
@@ -31,7 +32,8 @@ const List = () => {
             key={song.track_id} 
             song={song} 
           />);
-      })}
+        })
+      }
     </ListContainer>
   )
 }
