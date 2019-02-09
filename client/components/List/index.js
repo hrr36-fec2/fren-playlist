@@ -12,6 +12,8 @@ const List = () => {
     , [showEllipsis, setShowEllipsis] = useState(false)
     , [statusIcon, setStatusIcon]     = useState('music_note')
     , handleClick = (e) => {
+        setShowEllipsis(true);
+        setStatusIcon('play_arrow');
         setActive([e.target][0].id === active ? 0 : [e.target][0].id);
       }
     , handleMouseOver = (e) => {
