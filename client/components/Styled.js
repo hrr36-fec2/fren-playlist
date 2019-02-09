@@ -19,7 +19,46 @@ export const Container = sc.div`
 // --- Info
 
 export const InfoContainer = sc.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 30%;
+`
+
+export const InfoName = sc.div`
+  font-size: 1.75rem;
+  font-weight: bold;
+  line-height: 2.25rem;
+  margin-top: 1rem;
+`
+
+export const ArtCover = sc.div`
+  height: 14.35rem;
+  width: 14.35rem;
+`
+
+export const InfoPlayButton = sc.button`
+  width: 70%;
+  background-color: #1db954;
+  outline: 0;
+  border: 0;
+  border-radius: 500px;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: none 33ms cubic-bezier(.3, 0, .7, 1);
+  :hover {
+    background-color: #1ed760;
+    transform: scale(1.06);
+    transition: none 33ms cubic-bezier(.3, 0, 0, 1);
+  }
+  :active {
+    transform: scale(1.01);
+    background-color: #1db954;
+  }
 `
 
 // --- List
