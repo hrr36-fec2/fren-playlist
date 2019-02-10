@@ -67,6 +67,8 @@ export const ListContainer = sc.ul`
   list-style: none;
 `
 export const ListIcon = sc.i`
+  width: 18px;
+  height: 18px;
   font-size: 18px;
 `
 
@@ -75,7 +77,8 @@ export const TrackDetails = sc.div`
   align-items: center;
   margin: 1rem 0;
   padding: .7rem;
-  background-color: ${props => props.isActive && '#343434'};
+  background-color: ${props => props.isSelected && '#343434'};
+  color: ${props => props.isPlaying && '#1ed760'};
   :hover {
     background-color: #414141;
   }

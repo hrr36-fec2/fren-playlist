@@ -12,6 +12,8 @@ import {
 import { PlayListContext } from '../Context.js';
 
 const Info = () => {
+  let
+    ctx = useContext(PlayListContext);
   return (
     <InfoContainer>
       <ArtCover>
@@ -23,8 +25,10 @@ const Info = () => {
       <Anch style={{color: '#b2b2b2', fontSize: '14px'}}>
         obdb
       </Anch>
-      <InfoPlayButton>
-        Play
+      <InfoPlayButton onClick={() => {
+        ctx.handlePlayClick(ctx.song_tracks[0].track_id, ctx.song_tracks[0].track_duration); 
+      }}>
+        { ctx.isPlaying ? 'pause' : 'play' }
       </InfoPlayButton>
       <div style={{color: '#b2b2b2', fontSize: '14px'}}>
         9 songs
@@ -32,7 +36,6 @@ const Info = () => {
       <div style={{margin: '1rem 0'}}>
         <ListIcon className="fas fa-ellipsis-h"></ListIcon>
       </div>
-      
     </InfoContainer>
   )
 }
