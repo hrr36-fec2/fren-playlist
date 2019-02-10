@@ -7,32 +7,28 @@ import { PlayListContext } from '../Context.js';
 
 const List = () => {
   let 
-    ctx = useContext(PlayListContext)
-    , [active, setActive]             = useState(0)
-    , [showEllipsis, setShowEllipsis] = useState(false)
-    , [statusIcon, setStatusIcon]     = useState('music_note')
-    , handleClick = (e) => {
-        setShowEllipsis(true);
-        setStatusIcon('play_arrow');
-        setActive([e.target][0].id === active ? 0 : [e.target][0].id);
-      }
-    , handleMouseOver = (e) => {
-        setShowEllipsis(!showEllipsis);
-        setStatusIcon(statusIcon === 'music_note' ? 'play_arrow' : 'music_note');
-      }
+    ctx                       = useContext(PlayListContext)
+    , [selected, setSelected] = useState('0');
+  function handleSelect (track) {
+    if (!(track === selected)) {
+      setSelected(track);
+    }
+  };   
   return (
     <ListContainer>
       {
         ctx.song_tracks.map((song) => {
         return (
-          <Item 
-            isActive={active === song.track_id}
-            mouseOverHandler={handleMouseOver}
-            showEllipsis={showEllipsis}
-            clickHandler={handleClick}
-            statusIcon={statusIcon}
+          <Item
+            iconSet={
+              (ctx.activeTrack === song.track_id) && ctx.isPlaying 
+              ? ['volume_up', 'pause'] 
+              : ['music_note', 'play_arrow']
+            }
+            isSelected={selected === song.track_id}
+            handleSelect={handleSelect}
             key={song.track_id} 
-            song={song} 
+            song={song}
           />);
         })
       }
@@ -41,5 +37,3 @@ const List = () => {
 }
 
 export default List;
-
-// 
