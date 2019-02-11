@@ -90,8 +90,10 @@ export const TrackInfo = sc.div`
   padding: 0 1rem;
 `;
 
-export const TrackDuration = sc.span`
+export const TrackDuration = sc.div`
   margin-left: auto;
+  display: flex;
+  flex-direction: row;
 `;
 
 /**

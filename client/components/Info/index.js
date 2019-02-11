@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 
 import { 
-  Anch,
-  ListIcon,  
+  Anch,  
   ArtCover, 
   InfoName,
   InfoContainer, 
@@ -10,10 +9,14 @@ import {
 } from '../Styled.js';
 
 import { PlayListContext } from '../Context.js';
+import Ellipsis from '../Ellipsis';
 
 const Info = () => {
   let
     ctx = useContext(PlayListContext);
+  let handleTest = function() {
+    console.log('this works');
+  };
   return (
     <InfoContainer>
       <ArtCover>
@@ -34,7 +37,11 @@ const Info = () => {
         9 songs
       </div>
       <div style={{margin: '1rem 0'}}>
-        <ListIcon className="fas fa-ellipsis-h"></ListIcon>
+        <Ellipsis>
+          <button onClick={handleTest}>Start Radio</button>
+          <button onClick={handleTest}>Delete Playlist</button>
+          <button onClick={handleTest}>Copy Playlist link</button>
+        </Ellipsis>
       </div>
     </InfoContainer>
   );
