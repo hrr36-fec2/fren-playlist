@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 
 import { 
   Anch,
@@ -37,7 +37,7 @@ const Info = () => {
         <ListIcon className="fas fa-ellipsis-h"></ListIcon>
       </div>
     </InfoContainer>
-  )
-}
+  );
+};
 
 export default Info;

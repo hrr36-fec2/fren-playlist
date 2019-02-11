@@ -5,24 +5,23 @@ import PropTypes from 'prop-types';
 
 const
   Item = ({
-    song : { track_id, track_title, artist_name, album_title, track_duration }
+    song: { track_id, track_title, artist_name, album_title, track_duration }
     , iconSet, isSelected, handleSelect
   }) => {
     let
-      ctx                               = useContext(PlayListContext)
-      , [statusIcon, setStatusIcon]     = useState(iconSet[0])
-      , [showEllipsis, setShowEllipsis] = useState(false);
-    function handleMouseOver() {
+      ctx                             = useContext(PlayListContext),
+      [statusIcon, setStatusIcon]     = useState(iconSet[0]),
+      [showEllipsis, setShowEllipsis] = useState(false);
+    let handleMouseOver = function() {
       if (!isSelected) {
         setShowEllipsis(!showEllipsis);
       }
-    }
+    };
     useEffect(() => {
       if (isSelected) {
         setShowEllipsis(true);
         setStatusIcon(iconSet[1]);
-      }
-      else {
+      } else {
         setShowEllipsis(false);
         setStatusIcon(iconSet[0]);
       }
@@ -30,11 +29,10 @@ const
     useLayoutEffect(() => {
       if ((ctx.activeTrack === track_id) && ctx.isPlaying && isSelected) {
         setStatusIcon(iconSet[1]);
-      }
-      else {
+      } else {
         setStatusIcon(iconSet[0]);
       }
-    }, [ctx.activeTrack, ctx.isPlaying])
+    }, [ctx.activeTrack, ctx.isPlaying]);
     return (
       <React.Fragment>
         <li onClick={ (e) => { handleSelect(track_id); }} onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOver}>
@@ -60,8 +58,8 @@ const
           </TrackDetails>
         </li>
       </React.Fragment>
-    )
-  }
+    );
+  };
 
 Item.propTypes = {
   song: PropTypes.object.isRequired,

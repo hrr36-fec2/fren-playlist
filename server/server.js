@@ -14,4 +14,4 @@ express
     res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'));
   });
   
-express.listen(port, () => { console.log(`express is listening at port ${port}`) });
+express.listen(port, () => { console.log(`express is listening at port ${port}`); });

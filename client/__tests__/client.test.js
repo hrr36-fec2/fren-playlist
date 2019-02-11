@@ -7,7 +7,7 @@ import PlayList from '../PlayList.js';
 import Info from '../components/Info';
 import List from '../components/List';
 
-Enzyme.configure({ adapter : new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('components should load properly', () => {
   let wrapped;
@@ -20,6 +20,6 @@ describe('components should load properly', () => {
   it('should have an List', () => {
     expect(wrapped.find(List).length).toEqual(1);
   });
-})
+});
 
 

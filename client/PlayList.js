@@ -15,6 +15,6 @@ const PlayList = () => {
       </Container>
     </ContextWrap>
   );
-}
+};
 
 export default PlayList;
