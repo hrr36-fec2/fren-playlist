@@ -6,12 +6,15 @@ import PropTypes from 'prop-types';
 const
   Item = ({
     song: { track_id, track_title, artist_name, album_title, track_duration }
-    , iconSet, isSelected, handleSelect
+    , iconSet, isTrackPlaying, isSelected, handleSelect
   }) => {
     let
       ctx                             = useContext(PlayListContext),
       [statusIcon, setStatusIcon]     = useState(iconSet[0]),
       [showEllipsis, setShowEllipsis] = useState(false);
+    let handleItemClick = function() {
+      handleSelect(track_id);
+    };
     let handleMouseOver = function() {
       if (!isSelected) {
         setShowEllipsis(!showEllipsis);
@@ -27,7 +30,7 @@ const
       }
     }, [isSelected]);
     useLayoutEffect(() => {
-      if ((ctx.activeTrack === track_id) && ctx.isPlaying && isSelected) {
+      if (isTrackPlaying && ctx.isPlaying && isSelected) {
         setStatusIcon(iconSet[1]);
       } else {
         setStatusIcon(iconSet[0]);
@@ -35,8 +38,8 @@ const
     }, [ctx.activeTrack, ctx.isPlaying]);
     return (
       <React.Fragment>
-        <li onClick={ (e) => { handleSelect(track_id); }} onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOver}>
-          <TrackDetails id={track_id} isSelected={isSelected} isPlaying={ctx.activeTrack === track_id}>
+        <li onClick={handleItemClick} onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOver}>
+          <TrackDetails id={track_id} isSelected={isSelected} isTrackPlaying={isTrackPlaying}>
             <div onClick={() => { ctx.handlePlayClick(track_id, track_duration); }}>
               <ListIcon className="material-icons" >
                 {statusIcon}
@@ -70,3 +73,9 @@ Item.propTypes = {
 
 
 export default Item;
+
+/** changes
+ * <TrackDetails id={track_id} isSelected={isSelected} isPlaying={ctx.activeTrack === track_id}>
+ * if ((ctx.activeTrack === track_id) && ctx.isPlaying && isSelected) {
+ * (e) => { handleSelect(track_id); }
+ */

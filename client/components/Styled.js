@@ -79,7 +79,7 @@ export const TrackDetails = sc.div`
   margin: 1rem 0;
   padding: .7rem;
   background-color: ${props => props.isSelected && '#343434'};
-  color: ${props => props.isPlaying && '#1ed760'};
+  color: ${props => props.isTrackPlaying && '#1ed760'};
   :hover {
     background-color: #414141;
   }

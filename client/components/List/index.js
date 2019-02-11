@@ -25,6 +25,7 @@ const List = () => {
                   ? ['volume_up', 'pause'] 
                   : ['music_note', 'play_arrow']
               }
+              isTrackPlaying={ctx.activeTrack === song.track_id}
               isSelected={selected === song.track_id}
               handleSelect={handleSelect}
               key={song.track_id} 
