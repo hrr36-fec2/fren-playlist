@@ -1,6 +1,7 @@
 import { Anch, ListIcon, TrackDetails, TrackDuration, TrackInfo } from '../Styled.js';
 import React, { useContext, useState, useEffect, useLayoutEffect } from 'react';
 import { PlayListContext } from '../Context.js';
+import Ellipsis from '../Ellipsis';
 import PropTypes from 'prop-types';
 
 const
@@ -54,9 +55,21 @@ const
               </div>
             </TrackInfo>
             <TrackDuration>
-              {showEllipsis && <ListIcon className="fas fa-ellipsis-h"></ListIcon>}
+              {
+                showEllipsis && 
+                <div style={{ 'width': '2rem' }}>
+                  <Ellipsis>
+                    <button>Save to Favorites</button>
+                    <button>Add to Queue</button>
+                    <button>Remove from Playlist</button>
+                    <button>Copy Song Link</button>
+                  </Ellipsis>
+                </div>
+              }
               &nbsp;&nbsp;{' '}&nbsp;&nbsp;
-              { track_duration.split(':')[1] }{':'}{ track_duration.split(':')[2] }
+              <span>
+                { track_duration.split(':')[1] }{':'}{ track_duration.split(':')[2] }
+              </span>
             </TrackDuration>
           </TrackDetails>
         </li>
@@ -74,8 +87,10 @@ Item.propTypes = {
 
 export default Item;
 
-/** changes
- * <TrackDetails id={track_id} isSelected={isSelected} isPlaying={ctx.activeTrack === track_id}>
- * if ((ctx.activeTrack === track_id) && ctx.isPlaying && isSelected) {
- * (e) => { handleSelect(track_id); }
- */
+/*
+<div style={{ position: 'absolute' }}>
+                  <Ellipsis>
+                    <button>Hello</button>
+                  </Ellipsis>
+                </div>
+*/
