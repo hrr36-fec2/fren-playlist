@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const
   Item = ({
     song: { track_id, track_title, artist_name, album_title, track_duration }
-    , iconSet, isTrackPlaying, isSelected, handleSelect
+    , iconSet, isTrackPlaying, isSelected, handleSelect, index
   }) => {
     let
       ctx                             = useContext(PlayListContext),
@@ -61,7 +61,7 @@ const
                   <Ellipsis>
                     <button>Save to Favorites</button>
                     <button>Add to Queue</button>
-                    <button>Remove from Playlist</button>
+                    <button onClick={()=>{ ctx.handleRemoveTrack(index, track_id); }}>Remove from Playlist</button>
                     <button>Copy Song Link</button>
                   </Ellipsis>
                 </div>

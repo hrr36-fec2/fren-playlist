@@ -49,11 +49,21 @@ export default class ContextWrap extends React.Component {
     });
     this.changeActiveTrack(track_id, track_duration);
   }
+  handleRemoveTrack = (index, track_id) => {
+    let newList = [...this.state.song_tracks];
+    newList.splice(index, 1);
+    this.setState({
+      song_tracks: newList
+    });
+    // TODO : api call to remove base on track_id
+    console.log(track_id);
+  }
   render() {
     let ctx = {
       ...this.state,
       handlePlayClick: this.handlePlayClick,
-      changeActiveTrack: this.changeActiveTrack
+      changeActiveTrack: this.changeActiveTrack,
+      handleRemoveTrack: this.handleRemoveTrack
     }
     return (
       <PlayListContext.Provider value={ctx}>

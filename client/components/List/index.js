@@ -17,7 +17,7 @@ const List = () => {
   return (
     <ListContainer>
       {
-        ctx.song_tracks.map((song) => {
+        ctx.song_tracks.map((song, index) => {
           return (
             <Item
               iconSet={
@@ -29,6 +29,7 @@ const List = () => {
               isSelected={selected === song.track_id}
               handleSelect={handleSelect}
               key={song.track_id} 
+              index={index}
               song={song}
             />);
         })
