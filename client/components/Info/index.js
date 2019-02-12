@@ -20,13 +20,13 @@ const Info = () => {
   return (
     <InfoContainer>
       <ArtCover>
-        <img height="230px" width="230px" src="https://mosaic.scdn.co/640/3065d88f92c1879bfd67fb575867efae32ef96de68fd7136a825e28eb72fccfef55d4d1ff2b0b942b771ca4987112e670593e4f79dfe0acb7645458db988e4675b9ebb128c892dab2f9b3f97c2301216"/>
+        <img height="230px" width="230px" src="https://picsum.photos/300/300/?random"/>
       </ArtCover>
       <InfoName>
-        Info
+        {ctx.playlist_name}
       </InfoName>
       <Anch style={{color: '#b2b2b2', fontSize: '14px'}}>
-        obdb
+        {ctx.playlist_owner}
       </Anch>
       <InfoPlayButton onClick={() => {
         ctx.handlePlayClick(ctx.song_tracks[0].track_id, ctx.song_tracks[0].track_duration); 
@@ -34,7 +34,7 @@ const Info = () => {
         { ctx.isPlaying ? 'pause' : 'play' }
       </InfoPlayButton>
       <div style={{color: '#b2b2b2', fontSize: '14px'}}>
-        9 songs
+        {ctx.song_count} songs
       </div>
       <div style={{margin: '1rem 0'}}>
         <Ellipsis>
