@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export const PlayListContext = React.createContext();
 
@@ -7,35 +8,35 @@ export default class ContextWrap extends React.Component {
     isPlaying : false,
     activeTrack: '',
     activeTrackDuration: '',
-    song_tracks : [
-      {
-        "track_id": "89433", 
-        "track_title": "nostalgia of an ex-gangsta-rapper", 
-        "track_duration": "00:05:30", 
-        "artist_name": "deef", 
-        "album_title": "Beat Scene Routine", 
-        "album_image_file": "images/albums/deef_-_Beat_Scene_Routine_-_20130821140335983.jpg", 
-        "track_url": "https://freemusicarchive.org/music/no_curator/deef/Beat_Scene_Routine/deef_-_04_-_nostalgia_of_an_ex-gangsta-rapper.mp3"
-      },
-      {
-        "track_id": "89434", 
-        "track_title": "nostalgia of an ex-gangsta-rocker", 
-        "track_duration": "00:05:30", 
-        "artist_name": "deef", 
-        "album_title": "Beat Scene Routine", 
-        "album_image_file": "images/albums/deef_-_Beat_Scene_Routine_-_20130821140335983.jpg", 
-        "track_url": "https://freemusicarchive.org/music/no_curator/deef/Beat_Scene_Routine/deef_-_04_-_nostalgia_of_an_ex-gangsta-rapper.mp3"
-      },
-      {
-        "track_id": "89435", 
-        "track_title": "nostalgia of an ex-gangsta-dancer", 
-        "track_duration": "00:05:30", 
-        "artist_name": "deef", 
-        "album_title": "Beat Scene Routine", 
-        "album_image_file": "images/albums/deef_-_Beat_Scene_Routine_-_20130821140335983.jpg", 
-        "track_url": "https://freemusicarchive.org/music/no_curator/deef/Beat_Scene_Routine/deef_-_04_-_nostalgia_of_an_ex-gangsta-rapper.mp3"
-      }
-    ]
+    playlist_owner: '',
+    playlist_name: '',
+    playlist_id: '',
+    song_tracks: [],
+    song_count: 0
+  }
+  componentDidMount () {
+    this.fetchCurrentPlaylistData();
+  }
+  fetchCurrentPlaylistData = () => {
+    axios
+      .get('http://localhost:3002/api/playlist/1')
+      .then((results) => {
+        if (!results) {
+          throw 'failed to get data';
+        }
+        let songs = JSON.parse(results.data.songs);
+        this.setState({
+          playlist_owner: results.data.owner,
+          playlist_name: results.data.name,
+          playlist_id: results.data._id,
+          song_tracks: songs,
+          song_count: songs.length - 1
+        });
+        return;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   changeActiveTrack = (track_id, track_duration) => {
     this.setState({
