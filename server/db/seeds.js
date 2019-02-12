@@ -2,12 +2,14 @@ const maria = require('mariadb');
 const path = require('path');
 const fs = require('fs');
 
+console.log(process.env);
+
 let mdb = maria.createPool({
-  host: 'localhost',
+  host: process.env.AWS_MARIA_URI || 'localhost',
   user: 'root',
-  password: 'mar1a',
+  password: process.env.AWS_MARIA_PWD || process.env.MDBP,
   database: 'hrr',
-  connectionLimit: 9
+  connectionLimit: 12
 });
 
 fs.readFile(path.resolve(__dirname, 'featured.json'), (err, data) => {

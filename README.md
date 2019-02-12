@@ -22,7 +22,7 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
+- Node 10.15.0
 - etc
 
 ## Development

@@ -19,7 +19,8 @@ export default class ContextWrap extends React.Component {
   }
   fetchCurrentPlaylistData = () => {
     axios
-      .get('http://localhost:3002/api/playlist/1')
+      // .get('http://localhost:3002/api/playlist/1')
+      .get('/api/playlist/1')
       .then((results) => {
         if (!results) {
           throw 'failed to get data';
@@ -57,7 +58,6 @@ export default class ContextWrap extends React.Component {
       song_tracks: newList
     });
     // TODO : api call to remove base on track_id
-    console.log(track_id);
   }
   render() {
     let ctx = {

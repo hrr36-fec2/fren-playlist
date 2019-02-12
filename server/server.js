@@ -1,11 +1,13 @@
-const path = require('path');
-const express = require('express')();
-const router = require('./api/router.js');
-const body_parser = require('body-parser');
-const static_route = require('express').static(path.join(__dirname, '../dist'));
-const port = process.env.PORT || 3002;
+const 
+  path = require('path'),
+  express = require('express')(),
+  router = require('./api/router.js'),
+  body_parser = require('body-parser'),
+  static_route = require('express').static(path.join(__dirname, '../dist')),
+  port = process.env.PORT || 3002;
 
 express
+  .use(require('cors')())
   .use(body_parser.urlencoded({ extended: false }))
   .use(body_parser.json())
   .use(static_route)
